@@ -6,7 +6,6 @@ function add_node()
 
 	var id = generate_number();
 	var color = generate_hex();
-	console.log(typeof id)
 	if (document.getElementById(id).innerHTML != ".")
 	{
 		index++;
