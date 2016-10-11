@@ -19,3 +19,8 @@ p.node{
 	height:340px;
 	overflow: scroll;
 }
+
+.col-xs-2{
+	font-size: 50px;
+}
+

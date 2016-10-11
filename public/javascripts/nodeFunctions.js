@@ -1,14 +1,18 @@
+
+var index = 1;
+
 function add_node()
 {
 
 	var id = generate_number();
 	var color = generate_hex();
-
+	console.log(typeof id)
 	if (document.getElementById(id).innerHTML != ".")
 	{
+		index++;
 		document.getElementById(id).innerHTML = "." ;
 		label_zone(id,color)
-		append_table(id,color);
+		append_table(index,id,color);
 	}else{
 		add_node();
 	}
@@ -36,17 +40,21 @@ function generate_hex()
 }
 
 
-function append_table(id,color)
+function append_table(index,id,color)
 {
 	var tableRow = document.createElement("tr")
 	var tableData1 = document.createElement("td")
 	var tableData2 = document.createElement("td")
+	var tableData3 = document.createElement("td")
+	var index = document.createTextNode(index)
 	var name = document.createTextNode(id)
 	var color = document.createTextNode(color)
-	tableData1.appendChild(name)
-	tableData2.appendChild(color)
+	tableData1.appendChild(index)
+	tableData2.appendChild(name)
+	tableData3.appendChild(color)
 	tableRow.appendChild(tableData1)
 	tableRow.appendChild(tableData2)
+	tableRow.appendChild(tableData3)
 	document.getElementById("append").appendChild(tableRow);
 }
 
@@ -54,4 +62,14 @@ function append_table(id,color)
 function label_zone(id,color)
 {
 	document.getElementById(id).style.backgroundColor = color;
+	
+	for(var i = id+1; i <= 36; i++)
+	{
+		if(document.getElementById(i.toString()).innerHTML != ".")
+		{
+		document.getElementById(i).style.backgroundColor = color;
+		}else{
+			break;
+		}
+	}
 }
